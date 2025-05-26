@@ -1,0 +1,1 @@
+Una aplicación de consola donde el usuario pueda gestionar tareas pendientes, en progreso o completadas. Las tareas se almacenan en un archivo de texto (persistencia local).
