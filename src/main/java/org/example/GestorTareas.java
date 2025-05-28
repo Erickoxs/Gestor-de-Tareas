@@ -29,99 +29,6 @@ public class GestorTareas {
     }
 
 
-    public void listarTareas() {
-
-        System.out.println("\n--- 📖 Sección de Listado de Tareas ---");
-
-        if (listaDeTareas.isEmpty()) {
-            System.out.println("INFO: No hay tareas registradas para mostrar. 텅 비었어요"); // Empty
-            return;
-        }
-
-        System.out.println("¿Cómo desea listar las tareas?");
-        System.out.println("1. Mostrar todas las tareas.");
-        System.out.println("2. Filtrar tareas por estado.");
-        System.out.print("Por favor, ingrese su opción (1 o 2): ");
-
-        int opcionPrincipal;
-        if (scanner.hasNextInt()) {
-            opcionPrincipal = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea pendiente después de nextInt()
-        } else {
-            System.out.println("ERROR: Opción inválida. Debe ingresar un número.");
-            scanner.nextLine(); // Limpiar el buffer del scanner
-            return;
-        }
-
-
-        if (opcionPrincipal == 1) {
-            System.out.println("\n--- 📚 Listado de Todas las Tareas ---");
-            int contador = 1;
-            for (Tareas tarea : listaDeTareas) {
-                System.out.println(contador + ". " + tarea);
-                contador++;
-            }
-            if (listaDeTareas.isEmpty()) { // Doble chequeo, aunque el primero debería bastar
-                System.out.println("INFO: No hay tareas para mostrar.");
-            }
-            System.out.println("------------------------------------");
-
-        } else if (opcionPrincipal == 2) {
-            System.out.println("\n--- 🔎 Filtrar Tareas por Estado ---");
-            System.out.println("Seleccione el estado por el cual desea filtrar:");
-            System.out.println("1. Por hacer");
-            System.out.println("2. En progreso");
-            System.out.println("3. Completado"); // Asegúrate que este String coincida con el que guardas
-            System.out.print("Ingrese su opción de estado (1, 2, o 3): ");
-
-            int opcionEstado;
-            if (scanner.hasNextInt()) {
-                opcionEstado = scanner.nextInt();
-                scanner.nextLine(); // Consumir el salto de línea
-            } else {
-                System.out.println("ERROR: Opción de estado inválida. Debe ingresar un número.");
-                scanner.nextLine(); // Limpiar el buffer
-                return;
-            }
-
-            String estadoBuscado = null;
-            if (opcionEstado == 1) {
-                estadoBuscado = "Por hacer";
-            } else if (opcionEstado == 2) {
-                estadoBuscado = "En progreso";
-            } else if (opcionEstado == 3) {
-                // OJO: En tu código original tenías "Completado.". Sé consistente.
-                // Usaré "Completado" sin punto para este ejemplo.
-                estadoBuscado = "Completado";
-            } else {
-                System.out.println("ERROR: Opción de estado no válida.");
-                return; // Salimos si la opción de estado no es válida
-            }
-
-            System.out.println("\n--- Tareas con estado: '" + estadoBuscado + "' ---");
-            boolean encontradas = false;
-            int contadorFiltrado = 1;
-            for (Tareas tarea : listaDeTareas) {
-                // Asumiendo que tarea.getEstado() devuelve List<String>
-                // Si devuelve un solo String, la comparación sería: estadoBuscado.equals(tarea.getEstado())
-                if (tarea.getEstado() != null && tarea.getEstado().contains(estadoBuscado)) {
-                    System.out.println(contadorFiltrado + ". " + tarea);
-                    encontradas = true;
-                    contadorFiltrado++;
-                }
-            }
-
-            if (!encontradas) {
-                System.out.println("INFO: No se encontraron tareas con el estado '" + estadoBuscado + "'.");
-            }
-            System.out.println("---------------------------------------");
-
-        } else {
-            System.out.println("ERROR: Opción principal no reconocida (" + opcionPrincipal + "). Por favor, elija 1 o 2.");
-        }
-
-    }
-
     public void actualizarTarea() {
         System.out.println("\n--- ✏️ Actualizar Tarea ---");
 
@@ -271,6 +178,7 @@ public class GestorTareas {
             System.out.println("INFO: No se encontró ninguna tarea con el ID " + idParaEliminar + ".");
         }
     }
+
 
 
 
