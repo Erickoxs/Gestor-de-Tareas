@@ -12,21 +12,19 @@ public class GestorTareas {
     }
 
 
-    public void agregarTarea (){
-        // Pedir por teclado los parametros a instanciar
-        System.out.println("Agrega el titulo de la tarea");
-          String titulo = scanner.nextLine();
-        System.out.println("Agrega la descripcion de la tarea");
-          String descripcion = scanner.nextLine();
+    public void agregarTarea() {
+        System.out.println("Agrega el título de la tarea:");
+        String titulo = scanner.nextLine();
 
+        System.out.println("Agrega la descripción de la tarea:");
+        String descripcion = scanner.nextLine();
 
-          // Instanciar la tarea
-        tarea = new Tareas(titulo, descripcion);
-        // Agregar la tarea a la lista de tareas
+        Tareas tarea = new Tareas(titulo, descripcion);
         listaDeTareas.add(tarea);
 
-        System.out.println(tarea + "Se agrego con exito.");
+        System.out.println("Tarea agregada con éxito: " + tarea);
     }
+
 
 
     public void actualizarTarea() {

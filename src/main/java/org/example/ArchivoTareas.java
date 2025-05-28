@@ -9,7 +9,7 @@ public class ArchivoTareas {
     private static final String NOMBRE_ARCHIVO = "tareas.txt";
 
     public ArchivoTareas(List<Tareas> listaDeTareas) {
-        this.listaDeTareas = listaDeTareas != null ? new ArrayList<>(listaDeTareas) : new ArrayList<>();
+        this.listaDeTareas = listaDeTareas;
     }
 
 
